@@ -9,26 +9,30 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * Created by Alex on 12.06.2017.
+ * Fragment that gets the extra data from its activity and displays the joke in an TextView
  */
 
 public class JokeTellingFragment extends Fragment {
 
-    public JokeTellingFragment() {}
+    public JokeTellingFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_joke_teller, container, false);
 
+        // get the Extra data from the Intent
         Intent intent = getActivity().getIntent();
         String joke = intent.getStringExtra(JokeTellingActivity.EXTRA_JOKE);
 
         TextView jokeTextView = (TextView) root.findViewById(R.id.joke);
 
-        if (joke != null && !joke.equals("")) {
+        // set the text
+        if (joke != null && !joke.equals(""))
             jokeTextView.setText(joke);
-        }
+        else
+            jokeTextView.setText(R.string.no_joke);
 
         return root;
     }

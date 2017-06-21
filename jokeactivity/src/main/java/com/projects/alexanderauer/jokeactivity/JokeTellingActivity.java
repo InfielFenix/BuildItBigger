@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 /**
- * Created by Alex on 12.06.2017.
+ * The Activity that provides the TextView with the joke
  */
 
 public class JokeTellingActivity extends AppCompatActivity {
