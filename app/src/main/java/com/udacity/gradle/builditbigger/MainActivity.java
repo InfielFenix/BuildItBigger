@@ -18,8 +18,12 @@ import com.projects.alexanderauer.jokinggcm.myJokingApi.MyJokingApi;
 
 import java.io.IOException;
 
+import static com.udacity.gradle.builditbigger.MainActivity.API_URL;
+
 public class MainActivity extends AppCompatActivity {
     private ProgressBar spinner;
+
+    public static final String API_URL = "http://10.0.2.2:8080/_ah/api/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,7 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context,ProgressBar>, Void, Stri
                     // options for running against local devappserver
                     // - 10.0.2.2 is localhost's IP address in Android emulator
                     // - turn off compression when running against local devappserver
-                    .setRootUrl(context.getString(R.string.root_url))
+                    .setRootUrl(API_URL)
                     .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                         @Override
                         public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
@@ -70,7 +74,7 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context,ProgressBar>, Void, Stri
             // do the web request and return the joke
             return myJokingApiService.getJoke().execute().getData();
         } catch (IOException e) {
-            return e.getMessage();
+            return "";
         }
     }
 
